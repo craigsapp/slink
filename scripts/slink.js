@@ -41,7 +41,7 @@ function SLINK() {
 
 	this.defaultEntryTemplate = '';
 	this.defaultEntryTemplate += '{{#each this}}\n';
-	this.defaultEntryTemplate += '   <details open>\n';
+	this.defaultEntryTemplate += '   <details class="link-entry" open>\n';
 	this.defaultEntryTemplate += '      <summary>\n';
 	this.defaultEntryTemplate += '      {{{TITLE}}}\n';
 	this.defaultEntryTemplate += '      </summary>\n';
@@ -119,6 +119,36 @@ SLINK.prototype.getLinkCount = function () {
 
 
 
+//////////////////////////////
+//
+// SLINK.prototype.linksToHtml --
+//
+
+SLINK.prototype.linksToHtml = function () {
+	var slink = new SLINK;
+	this.addLinkEntry();
+
+	var output = "";
+
+	var renderLinkList = Handlebars.compile(this.defaultEntryTemplate);
+	var categories = this.getCategoryList();
+	for (var property in categories) {
+		if (categories.hasOwnProperty(property)) {
+
+			output += '<details open class="link-category">'
+			output += '<summary>';
+			output += property;
+			output += '</summary>';
+			output += renderLinkList(categories[property]);
+			output += '</details>';
+		}
+	}
+	// var  = this.getFlatList();
+	// var html = renderLinkList(listing);
+	return output;
+}
+
+
 
 //////////////////////////////
 //
@@ -143,7 +173,9 @@ SLINK.prototype.loadAtonLinks = function (element) {
 				var aton = new ATON();
 				aton.setOnlyChildRoot();
             var parsed = aton.parse(request.responseText);
+console.log(parsed);
 				that.addLinkEntry(parsed);
+console.log("got here", that);
 				element.innerHTML = that.linksToHtml();
          } catch(err) {
             console.log('Error parsing search results: %s', err);
@@ -161,29 +193,6 @@ SLINK.prototype.loadAtonLinks = function (element) {
 
 //////////////////////////////
 //
-// SLINK.prototype.linksToHtml --
-//
-
-SLINK.prototype.linksToHtml = function () {
-	var slink = new SLINK;
-	this.addLinkEntry();
-
-	var output = "";
-	for (var i=0; i<this.getLinkCount(); i++) {
-		output += " " + i;
-	}
-
-	var renderAllLinks = Handlebars.compile(this.defaultEntryTemplate);
-	var listing = this.getFlatList();
-console.log(listing);
-	var html = renderAllLinks(listing);
-	return html;
-}
-
-
-
-//////////////////////////////
-//
 // SLINK.prototype.getFlatList --
 //
 
@@ -192,5 +201,14 @@ SLINK.prototype.getFlatList = function () {
 };
 
 
+
+//////////////////////////////
+//
+// SLINK.prototype.getCategoryList --
+//
+
+SLINK.prototype.getCategoryList = function () {
+	return this.categoryList;
+};
 
 
