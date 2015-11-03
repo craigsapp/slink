@@ -28,6 +28,7 @@
 'use strict';
 
 
+
 //////////////////////////////
 //
 // SLINK constructor -- The slink object is used to manage
@@ -39,19 +40,29 @@ function SLINK() {
 	this.categoryList = {};
 	this.entryTemplate = "";
 
-	this.defaultEntryTemplate = '';
-	this.defaultEntryTemplate += '{{#each this}}\n';
-	this.defaultEntryTemplate += '   <details class="link-entry" open>\n';
-	this.defaultEntryTemplate += '      <summary>\n';
-	this.defaultEntryTemplate += '      {{{TITLE}}}\n';
-	this.defaultEntryTemplate += '      </summary>\n';
-	this.defaultEntryTemplate += '      <a href="{{URL}}">{{URL}}</a>\n';
-	this.defaultEntryTemplate += '      <p>{{{DESCRIPTION}}}</p>\n';
-	this.defaultEntryTemplate += '   </details>\n';
-	this.defaultEntryTemplate += '{{/each}}\n';
+	this.defaultEntryTemplate =									  '\n' +
+		'{{#each this}}													\n' +
+		'	<details class="link-entry" open>						\n' +
+		'		<summary>													\n' +
+		'			{{{TITLE}}}												\n' +
+		'		</summary>													\n' +
+		'		{{#if URL}}{{{url URL}}}{{/if}}						\n' +
+		'		{{#if URL2}}{{{url URL2}}}{{/if}}					\n' +
+		'		{{#if URL3}}{{{url URL3}}}{{/if}}					\n' +
+		'		{{#if URL4}}{{{url URL4}}}{{/if}}					\n' +
+		'		{{#if URL5}}{{{url URL5}}}{{/if}}					\n' +
+		'		{{#if URL6}}{{{url URL6}}}{{/if}}					\n' +
+		'		{{#if URL7}}{{{url URL7}}}{{/if}}					\n' +
+		'		{{#if URL8}}{{{url URL8}}}{{/if}}					\n' +
+		'		{{#if URL9}}{{{url URL9}}}{{/if}}					\n' +
+		'		<p>{{{DESCRIPTION}}}</p>								\n' +
+		'	</details>														\n' +
+		'{{/each}}															\n';
 
 	return this;
 }
+
+
 
 
 
@@ -134,7 +145,7 @@ SLINK.prototype.linksToHtml = function () {
 	var categories = this.getCategoryList();
 	for (var property in categories) {
 		if (categories.hasOwnProperty(property)) {
-
+			output += '<a name="' + property.replace(/\s+/g, '_') + '"> </a>';
 			output += '<details open class="link-category">'
 			output += '<summary>';
 			output += property;
@@ -173,9 +184,7 @@ SLINK.prototype.loadAtonLinks = function (element) {
 				var aton = new ATON();
 				aton.setOnlyChildRoot();
             var parsed = aton.parse(request.responseText);
-console.log(parsed);
 				that.addLinkEntry(parsed);
-console.log("got here", that);
 				element.innerHTML = that.linksToHtml();
          } catch(err) {
             console.log('Error parsing search results: %s', err);
@@ -210,5 +219,66 @@ SLINK.prototype.getFlatList = function () {
 SLINK.prototype.getCategoryList = function () {
 	return this.categoryList;
 };
+
+
+
+///////////////////////////////////////////////////////////////////////////
+//
+// Handlebar helping functions
+//
+
+//////////////////////////////
+//
+// Handlebars helper url --
+//
+
+Handlebars.registerHelper('url', function(url) {
+	var output = '';
+	if (Array.isArray(url)) {
+		for (var i=0; i<url.length; i++) {
+			output += getUrlText(url[i]);
+		}
+	} else {
+		output += getUrlText(url);
+	}
+	return new Handlebars.SafeString(output);
+});
+
+
+
+//////////////////////////////
+//
+// getUrlText --
+//
+
+function getUrlText(url) {
+	url = url.replace(/^\s+/, '')
+	         .replace(/\s+$/, '');
+	var link = url;
+	var post = '';
+	var matches;
+	if (matches = url.match(/^([^\s]+)\s+(.*)$/)) {
+		link = matches[1];
+		post = matches[2];
+	}
+	var output = '';
+	output += '<a ';
+	if (link.length > 90) {
+		output += ' style="font-size:80%;" ';
+	}
+	output += 'href="';
+	output += link;
+	output += '">';
+	output += link;
+	output += '</a>';
+
+	if (post) {
+		output += ' <span class="url-note">' + post + '</span>';
+	}
+	output += '<br>';
+	return output;
+}
+
+
 
 
