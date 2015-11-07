@@ -1,41 +1,42 @@
 
-@@BEGIN: LINK
-@TITLE:          Google
-@URL:            http://www.google.com
-@DESCRIPTION:    Search form for Google.
-@CREATION-DATE:  
-@EDIT-DATE:      
-@CATEGORY:       Search engines 
-@SUBCATEGORY:    
+@@BEGIN:	LINK
+@TITLE:		Google
+@URL:		http://www.google.com
+@DESCRIPTION:	Search form for Google.
+@CREATION-DATE:	
+@EDIT-DATE:	
+@CATEGORY:	Search engines 
+@SUBCATEGORY:	
 @SUBSUBCATEGORY: 
-@CATEGORY2:      
-@SUBCATEGORY2:   
-@@END:   LINK
+@CATEGORY2:	
+@SUBCATEGORY2:	
+@@END:		LINK
 
-@@BEGIN: LINK
-@TITLE:          Bing
-@URL:            http://www.bing.com
-@DESCRIPTION:    Search form for Bing.
-@CREATION-DATE:  
-@EDIT-DATE:      
-@CATEGORY:       Search engines 
-@SUBCATEGORY:    
+@@BEGIN:	LINK
+@TITLE:		Bing
+@URL:		http://www.bing.com
+@DESCRIPTION:	Search form for Bing.
+@CREATION-DATE:	
+@EDIT-DATE:	
+@CATEGORY:	Search engines 
+@SUBCATEGORY:	
 @SUBSUBCATEGORY: 
-@CATEGORY2:      
-@SUBCATEGORY2:   
-@@END:   LINK
+@CATEGORY2:	
+@SUBCATEGORY2:	
+@@END:		LINK
 
-@@BEGIN: LINK
-@TITLE:          YouTube
-@URL:            https://www.youtube.com
-@DESCRIPTION:    User-submitted videos.
-@CREATION-DATE:  
-@EDIT-DATE:      
-@CATEGORY:       Video
-@SUBCATEGORY:    
+@@BEGIN:	LINK
+@TITLE:		YouTube
+@URL:		https://www.youtube.com
+@URL2:		https://www.youtube.com
+@DESCRIPTION:	User-submitted videos.
+@CREATION-DATE:	
+@EDIT-DATE:	
+@CATEGORY:	Video
+@SUBCATEGORY:	
 @SUBSUBCATEGORY: 
-@CATEGORY2:      
-@SUBCATEGORY2:   
-@@END:   LINK
+@CATEGORY2:	
+@SUBCATEGORY2:	
+@@END:		LINK
 
 

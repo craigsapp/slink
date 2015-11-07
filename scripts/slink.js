@@ -39,19 +39,47 @@ function SLINK() {
 	this.categoryList = {};
 	this.entryTemplate = "";
 
-	this.defaultEntryTemplate = '';
-	this.defaultEntryTemplate += '{{#each this}}\n';
-	this.defaultEntryTemplate += '   <details class="link-entry" open>\n';
-	this.defaultEntryTemplate += '      <summary>\n';
-	this.defaultEntryTemplate += '      {{{TITLE}}}\n';
-	this.defaultEntryTemplate += '      </summary>\n';
-	this.defaultEntryTemplate += '      <a href="{{URL}}">{{URL}}</a>\n';
-	this.defaultEntryTemplate += '      <p>{{{DESCRIPTION}}}</p>\n';
-	this.defaultEntryTemplate += '   </details>\n';
-	this.defaultEntryTemplate += '{{/each}}\n';
+	this.defaultEntryTemplate =									  '\n' +
+		'{{#each this}}													\n' +
+		'	<details class="link-entry" open>						\n' +
+		'		<summary>													\n' +
+		'			{{{TITLE}}}												\n' +
+		'		</summary>													\n' +
+		'		{{#if URL}}													\n' +
+		'			<a href="{{URL}}">{{URL}}</a><br>				\n' +
+		'		{{/if}}														\n' +
+		'		{{#if URL2}}												\n' +
+		'			<a href="{{URL2}}">{{URL2}}</a><br>				\n' +
+		'		{{/if}}														\n' +
+		'		{{#if URL3}}												\n' +
+		'			<a href="{{URL3}}">{{URL3}}</a><br>				\n' +
+		'		{{/if}}														\n' +
+		'		{{#if URL4}}												\n' +
+		'			<a href="{{URL4}}">{{URL4}}</a><br>				\n' +
+		'		{{/if}}														\n' +
+		'		{{#if URL5}}												\n' +
+		'			<a href="{{URL5}}">{{URL5}}</a><br>				\n' +
+		'		{{/if}}														\n' +
+		'		{{#if URL6}}												\n' +
+		'			<a href="{{URL6}}">{{URL6}}</a><br>				\n' +
+		'		{{/if}}														\n' +
+		'		{{#if URL7}}												\n' +
+		'			<a href="{{URL7}}">{{URL7}}</a><br>				\n' +
+		'		{{/if}}														\n' +
+		'		{{#if URL8}}												\n' +
+		'			<a href="{{URL8}}">{{URL8}}</a><br>				\n' +
+		'		{{/if}}														\n' +
+		'		{{#if URL9}}												\n' +
+		'			<a href="{{URL9}}">{{URL9}}</a><br>				\n' +
+		'		{{/if}}														\n' +
+		'		<p>{{{DESCRIPTION}}}</p>								\n' +
+		'	</details>														\n' +
+		'{{/each}}															\n';
 
 	return this;
 }
+
+
 
 
 
