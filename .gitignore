@@ -1,3 +1,5 @@
 .DS_Store
 scripts
 share
+_site
+src/Makefile
