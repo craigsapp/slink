@@ -3,26 +3,17 @@ layout: default
 title: Link test 1
 ---
 
-<script>
-// vim: ts=3
-
-
-document.addEventListener("DOMContentLoaded", function() {
-	loadLinks();
-});
-
-function loadLinks() {
-	var slinks = document.querySelectorAll('[class^="slink"]');
-	for (var i=0; i<slinks.length; i++) {
-		var slink = new SLINK;
-		slink.loadAtonLinks(slinks[i]);
-	}
-}
-
-</script>
-
-
+<link rel="stylesheet" href="/styles/slink.css">
+<script src="/scripts/aton.js"></script>
+<script src="/scripts/slink.js"></script>
+{% include slink/slink.html %}
 
 <h1> Link test 1 </h1>
 
-<div class="slink" title="links.aton">div</div>
+<a href="links.txt">Here</a> is the link definition file for this page.
+<br>
+<br>
+<br>
+
+<div class="slink-search"></div>
+<div class="slink" title="links.txt"></div>
