@@ -3,9 +3,7 @@
 SLINK
 ======
 
-Slink is a JavaScript package for displaying lists of website links which are
-shown in a collapsible and searchable list (but does not collapse in current 
-versions of Firefox.)
+Slink is a JavaScript package for displaying a list of searchable links.
 
 
 Installation
@@ -21,23 +19,22 @@ a local copy in the same directory, you would add this code to your HTML file:
 	<link rel="stylesheet" href="slink.css">
 ```
 
-Then you can load links in this manner:
+A third source file is aton.html, this can be copied directly
+into your webpage, or added to the page via templating systems
+such as Jekyll:
 
 ```
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-   var slinks = document.querySelectorAll('[class^="slink"]');
-   for (var i=0; i<slinks.length; i++) {
-      var slink = new SLINK;
-      slink.loadAtonLinks(slinks[i]);
-   }  
-});
-</script>
-
-<div class="slink" title="links.aton"></div>
+{% include slink.html %}
 ```
 
+To display links on a page, an element with a class "slink" is needed.
+The "title" attribute is used to specify the file in the same directory
+which contains the list of links.
 
+```
+<div class="slink-search"></div>
+<div id="categories" class="slink" title="links.aton"></div>
+```
 
 
 
